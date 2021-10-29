@@ -1,0 +1,46 @@
+<div class="container">
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label>Firstname</label>
+      <div class="input-group">
+        <input class="form-control" name="firstname" required ngModel #firstname="ngModel" >
+      </div>
+      <span class="error" *ngIf="firstname.invalid && firstname.touched" class="error">You must enter firstname</span>
+    </div>
+    <div class="form-group">
+      <label>Lastname</label>
+      <div class="input-group">
+        <input name="lastname" class="form-control" required ngModel #lastname="ngModel" />
+      </div>
+      <span class="error" *ngIf="lastname.invalid && lastname.touched" class="error">You must enter lastname</span>
+    </div>
+    <div class="form-group">
+      <label >Department</label>
+      <div class="input-group">
+        <input name="department" ngModel required #department="ngModel" class="form-control" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <div class="input-group">
+        <input name="email" required minlength="3" class="form-control" ngModel #email="ngModel" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="country">Country</label>
+      <div class="input-group">
+        <select id="country" name="country" required ngModel #country="ngModel" class="form-control" >
+          <option *ngFor="let country of countries" value={{country}}>
+            {{country}}
+          </option>
+        </select>
+      </div>
+      <span class="error" *ngIf="country.invalid && country.touched" class="error">You must enter lastname</span>
+    </div>
+    <div class="border text-center">
+      <button type="submit" data-dismiss="modal" class="btn btn-info">Submit</button>
+    </div>
+  </form>
+</div>
+<h3>{{message}}</h3>
